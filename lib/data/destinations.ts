@@ -15,6 +15,7 @@ export interface Destination {
   highlights: string[];
   prices: PackagePrices;
   image: string;
+  secondaryImage?: string;
 }
 
 export const destinations: Destination[] = [

@@ -38,12 +38,14 @@ const fallbackDestination: Destination = {
   slug: "new-york",
   country: "États-Unis",
   region: "Amériques",
-  price: 18500,
   image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2070&auto=format&fit=crop",
   secondaryImage: "https://images.unsplash.com/photo-1534430480872-3498386e7856?q=80&w=2070&auto=format&fit=crop",
   description:
     "Une immersion totale au cœur de Manhattan, entre gratte-ciels iconiques, musées d'exception, comédies musicales sur Broadway et l'énergie unique de la métropole américaine.",
-  prices: { "01": 18500 },
+  longDescription:
+    "Une immersion totale au cœur de Manhattan, entre gratte-ciels iconiques, musées d'exception, comédies musicales sur Broadway et l'énergie unique de la métropole américaine.",
+  highlights: [],
+  prices: { "01": 18500, "02": 28675, "03": 41625 },
 };
 
 // Générateur dynamique des Moments Forts selon la destination
@@ -98,7 +100,7 @@ function getPackages(dest: Destination): Package[] {
     return (dest as any).packages;
   }
 
-  const basePrice = dest.prices?.["01"] || dest.price || 15000;
+  const basePrice = dest.prices?.["01"] || 15000;
 
   return [
     {
@@ -155,7 +157,7 @@ export default function DestinationDetailPage({ params }: DestinationPageProps) 
 
   const momentsForts = getMomentsForts(dest);
   const packagesList = getPackages(dest);
-  const startingPrice = dest.prices?.["01"] || dest.price || 15000;
+  const startingPrice = dest.prices?.["01"] || 15000;
 
   const [activeMoment, setActiveMoment] = useState<number>(0);
 
